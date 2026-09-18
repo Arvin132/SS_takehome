@@ -175,3 +175,11 @@
     </tr>
   </tbody>
 </table>
+
+
+## Assumptions
+- Rate to table growth is bound by Plant days. Meaning we don't have milions of crews for just 200 plants
+- Majority of our users are bound to only one zone, and control at most 3 Plants
+- We take the data given to use by random generator as facts. We don't sanity-check them
+- 200 Plants by End of the yaer, worst case double the users and plants by next year
+- For the time being, we don't have malicious users who have access to our system
