@@ -1,0 +1,11 @@
+backend/venv/*
+backend/db.sqlite3
+/backend/solar/__pycache__
+.env
+# Seed data is regenerated fresh (relative to "today") by manage.py seed_fleet_data
+data/*.csv
+data/readings/*.csv
+/backend/core/__pycache__
+/backend/core/management/commands/__pycache__
+/backend/core/management/__pycache__
+**/__pycache__

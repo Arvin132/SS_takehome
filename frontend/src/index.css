@@ -1,0 +1,183 @@
+@import "tailwindcss";
+
+/* Dark mode is class driven (see lib/theme.ts), not media driven, so the user can override. */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/*
+  Swish Solar brand tokens, see docs/design-reference/tokens.md.
+  Light values are the real site's palette; dark values are derived for the app shell.
+*/
+:root {
+  --background: #f9fbfd;
+  --foreground: #33394a;
+
+  --card: #ffffff;
+  --card-foreground: #33394a;
+
+  --muted: #f5f5f5;
+  --muted-foreground: #737373;
+
+  --subtle: #edede7;
+  --subtle-foreground: #33394a;
+
+  --primary: #df5b12;
+  --primary-foreground: #fafafa;
+  --primary-soft: #fde8d7;
+  --primary-soft-foreground: #b8480c;
+
+  --secondary: #33394a;
+  --secondary-foreground: #ffffff;
+
+  --destructive: #e7000b;
+  --destructive-foreground: #ffffff;
+  --destructive-soft: #fee2e2;
+
+  --success: #16a34a;
+  --success-soft: #dcfce7;
+
+  --border: #e5e5e5;
+  --input: #e5e5e5;
+  --ring: #df5b12;
+
+  --overlay: rgb(15 20 32 / 0.45);
+
+  --chart-1: #ef7c53;
+  --chart-2: #6684ce;
+  --chart-3: #e2b46b;
+  --chart-4: #cf844c;
+  --chart-5: #51586a;
+}
+
+/*
+  The sidebar rail is dark in both themes, matching the SwishOS product screenshots
+  (dark navy rail + light canvas). Only its hairlines shift between themes.
+*/
+:root {
+  --sidebar: #161c2c;
+  --sidebar-foreground: #e8eaf0;
+  --sidebar-muted: #8b93a7;
+  --sidebar-border: #262e42;
+  --sidebar-hover: #1e2637;
+  --sidebar-active: #fde8d7;
+  --sidebar-active-foreground: #b8480c;
+}
+
+.dark {
+  --background: #0b0f18;
+  --foreground: #e6e9f0;
+
+  --card: #141a27;
+  --card-foreground: #e6e9f0;
+
+  --muted: #1a2130;
+  --muted-foreground: #9aa3b5;
+
+  --subtle: #1f2637;
+  --subtle-foreground: #e6e9f0;
+
+  /* Brand orange is lightened on dark surfaces to hold a readable contrast ratio. */
+  --primary: #ef7c53;
+  --primary-foreground: #1a0d06;
+  --primary-soft: #3a2214;
+  --primary-soft-foreground: #f5b08c;
+
+  --secondary: #2a3347;
+  --secondary-foreground: #e6e9f0;
+
+  --destructive: #f2555f;
+  --destructive-foreground: #1a0405;
+  --destructive-soft: #3a1418;
+
+  --success: #34d07f;
+  --success-soft: #0f2e1e;
+
+  --border: #242d3f;
+  --input: #2c3648;
+  --ring: #ef7c53;
+
+  --overlay: rgb(4 7 13 / 0.65);
+
+  --sidebar: #0f1420;
+  --sidebar-border: #1e2637;
+  --sidebar-hover: #19202f;
+  --sidebar-active: #3a2214;
+  --sidebar-active-foreground: #f5b08c;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+
+  --color-subtle: var(--subtle);
+  --color-subtle-foreground: var(--subtle-foreground);
+
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary-soft: var(--primary-soft);
+  --color-primary-soft-foreground: var(--primary-soft-foreground);
+
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-destructive-soft: var(--destructive-soft);
+
+  --color-success: var(--success);
+  --color-success-soft: var(--success-soft);
+
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-overlay: var(--overlay);
+
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-muted: var(--sidebar-muted);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-hover: var(--sidebar-hover);
+  --color-sidebar-active: var(--sidebar-active);
+  --color-sidebar-active-foreground: var(--sidebar-active-foreground);
+
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+
+  --font-display: "Readex Pro", ui-sans-serif, system-ui, sans-serif;
+
+  --shadow-card: 0 1px 2px rgb(15 20 32 / 0.04), 0 8px 24px -12px rgb(15 20 32 / 0.12);
+  --shadow-lift: 0 2px 4px rgb(15 20 32 / 0.06), 0 16px 40px -16px rgb(15 20 32 / 0.2);
+}
+
+@layer base {
+  html {
+    color-scheme: light;
+  }
+
+  html.dark {
+    color-scheme: dark;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+  }
+
+  /* Display type is deliberately light weight, per the brand reference. */
+  h1, h2, h3 {
+    font-family: var(--font-display);
+    font-weight: 300;
+    letter-spacing: -0.01em;
+  }
+
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-ring;
+  }
+}
